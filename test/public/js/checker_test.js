@@ -15,7 +15,15 @@ describe('Checker', function () {
       expect(checker.whitelist(whitelist)).to.equal(true);
     });
 
-    it("should fail when the code doesn't contain the construct");
+    it("should fail when the code doesn't contain the construct", function () {
+      var code = `
+        var a = 42;
+      `;
+
+      var checker = new Checker(code);
+      var whitelist = ['ForStatement'];
+      expect(checker.whitelist(whitelist)).to.equal(false);
+    });
   });
 
   describe('#blacklist', function () {
