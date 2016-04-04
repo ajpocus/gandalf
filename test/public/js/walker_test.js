@@ -16,6 +16,8 @@ describe('Walker', function () {
 
       Walker.walk(ast, function (node) {
         nodes.push(node);
+      }, function () {
+        console.log('done');
       });
 
       expect(nodes[0].type).to.equal('ForStatement');

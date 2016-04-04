@@ -1,5 +1,6 @@
 var esprima = require('esprima');
 var estraverse = require('estraverse');
+var Walker = require('./walker');
 
 function Checker(code) {
   this.code = code;
@@ -7,16 +8,17 @@ function Checker(code) {
 
 Checker.prototype.whitelist = function (whitelist) {
   var ast = esprima.parse(this.code);
-  estraverse.traverse(ast, {
-    enter: function (node, parent) {
-      for (var i = 0; i < whitelist.length; i++) {
-        var type = whitelist[i];
-        if (node.type === type) {
-          return true;
-        }
+  var result = false;
+  Walker.walk(ast, function (node) {
+    for (var i = 0; i < whitelist.length; i++) {
+      var type = whitelist[i];
+      if (node.type === type) {
+        result = true;
       }
     }
   });
+
+  return result;
 };
 
 Checker.prototype.blacklist = function (blacklist) {
