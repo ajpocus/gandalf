@@ -22,7 +22,18 @@ Checker.prototype.whitelist = function (whitelist) {
 };
 
 Checker.prototype.blacklist = function (blacklist) {
+  var ast = esprima.parse(this.code);
+  var result = true;
+  Walker.walk(ast, function (node) {
+    for (var i = 0; i < blacklist.length; i++) {
+      var type = blacklist[i];
+      if (node.type === type) {
+        result = false;
+      }
+    }
+  });
 
+  return result;
 };
 
 Checker.prototype.checkStructure = function (structure) {

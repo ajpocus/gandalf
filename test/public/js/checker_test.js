@@ -16,9 +16,7 @@ describe('Checker', function () {
     });
 
     it("should fail when the code doesn't contain the construct", function () {
-      var code = `
-        var a = 42;
-      `;
+      var code = 'var a = 42;';
 
       var checker = new Checker(code);
       var whitelist = ['ForStatement'];
@@ -27,8 +25,24 @@ describe('Checker', function () {
   });
 
   describe('#blacklist', function () {
-    it("should pass when the code doesn't contain the construct");
-    it('should fail when the code contains the construct');
+    it("should pass when the code doesn't contain the construct", function () {
+      var code = 'var a = 42;';
+      var checker = new Checker(code);
+      var blacklist = ['ForStatement'];
+      expect(checker.blacklist(blacklist)).to.equal(true);
+    });
+
+    it('should fail when the code contains the construct', function () {
+      var code = `
+        for (var i = 0; i < 10; i++) {
+          console.log(i);
+        }
+      `;
+
+      var checker = new Checker(code);
+      var blacklist = ['ForStatement'];
+      expect(checker.blacklist(blacklist)).to.equal(false);
+    });
   });
 
   describe('#structure', function () {
