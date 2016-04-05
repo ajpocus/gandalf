@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>{{title}}</title>
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/dist/css/all.css" />
   </head>
+  
   <body>
-    {{{body}}}
+    <div id="root">
+      <header>
+        <h1 class="title">Gandalf</h1>
+        <h2 class="tagline">Tells you whether AST restraints pass.</h2>
+      </header>
+
+      <div id="content">
+        {{{body}}}
+      </div>
+
+      <footer>
+        Copyright 2016 Austin Pocus
+      </footer>
+
+      <script src="/dist/js/all.js"></script>
+    </div>
   </body>
 </html>

@@ -1,6 +1,6 @@
 # Gandalf
 
-Gandalf takes ESTree descriptions of restraints on a Javascript AST, and tells you whether they pass.
+Gandalf takes descriptions of restraints on a Javascript AST, and tells you whether they pass.
 
 ## Esprima vs. Acorn
 
