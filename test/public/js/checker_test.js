@@ -45,13 +45,26 @@ describe('Checker', function () {
     });
   });
 
-  describe('#structure', function () {
-    it('should pass when the code contains the structure');
-    it("should fail when the code doesn't contain the structure");
-  });
-
   describe('#query', function () {
-    it('should pass when the query returns a node');
-    it("should fail when the query doesn't return a node");
+    it('should pass when the query returns a node', function () {
+      var code = `
+        for (var i = 0; i < 10; i++) {
+          var a = i * i;
+          console.log(a);
+        }
+      `;
+
+      var checker = new Checker(code);
+      var query = 'ForStatement > VariableDeclaration';
+      expect(checker.query(query)).to.equal(true);
+    });
+
+    it("should fail when the query doesn't return a node", function () {
+      var code = `var a = 42;`;
+
+      var checker = new Checker(code);
+      var query = 'ForStatement > VariableDeclaration';
+      expect(checker.query(query)).to.equal(false);
+    });
   });
 });

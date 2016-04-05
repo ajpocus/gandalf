@@ -1,7 +1,7 @@
 var Walker = {
   walk: function walk(ast, cb) {
-    var node = ast.body;
-    var unvisitedNodes = [ node ];
+    var firstNode = ast.body;
+    var unvisitedNodes = [ firstNode ];
 
     while (unvisitedNodes.length) {
       var body = unvisitedNodes.pop();

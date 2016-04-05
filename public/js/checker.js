@@ -1,15 +1,15 @@
 var esprima = require('esprima');
-var estraverse = require('estraverse');
+var esquery = require('esquery');
 var Walker = require('./walker');
 
 function Checker(code) {
   this.code = code;
+  this.ast = esprima.parse(this.code);
 }
 
 Checker.prototype.whitelist = function (whitelist) {
-  var ast = esprima.parse(this.code);
   var result = false;
-  Walker.walk(ast, function (node) {
+  Walker.walk(this.ast, function (node) {
     for (var i = 0; i < whitelist.length; i++) {
       var type = whitelist[i];
       if (node.type === type) {
@@ -22,9 +22,8 @@ Checker.prototype.whitelist = function (whitelist) {
 };
 
 Checker.prototype.blacklist = function (blacklist) {
-  var ast = esprima.parse(this.code);
   var result = true;
-  Walker.walk(ast, function (node) {
+  Walker.walk(this.ast, function (node) {
     for (var i = 0; i < blacklist.length; i++) {
       var type = blacklist[i];
       if (node.type === type) {
@@ -36,12 +35,10 @@ Checker.prototype.blacklist = function (blacklist) {
   return result;
 };
 
-Checker.prototype.checkStructure = function (structure) {
-
-};
-
 Checker.prototype.query = function (query) {
-
+  var selectorAst = esquery.parse(query);
+  var matches = esquery.match(this.ast, selectorAst);
+  return matches.length !== 0;
 };
 
 exports = module.exports = Checker;
