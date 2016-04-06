@@ -1,2 +1,29 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div id="demo">
+  <div class="left column">
+    <textarea id="code" rows="16" cols="80">
+for (var i = 0; i < 10; i++) {
+  console.log(i);
+}
+    </textarea>
+  </div>
+
+  <div class="right column">
+    <div class="status-group">
+      <label>Whitelist</label>
+      <input id="whitelist">
+      <span class="status"></span>
+    </div>
+
+    <div class="status-group">
+      <label>Blacklist</label>
+      <input id="blacklist">
+      <span class="status"></span>
+    </div>
+
+    <div class="status-group">
+      <label>Query</label>
+      <input id="query">
+      <span class="status"></span>
+    </div>
+  </div>
+</div>
