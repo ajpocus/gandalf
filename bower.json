@@ -1,0 +1,22 @@
+{
+  "name": "gandalf",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Austin Pocus <austin.pocus@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
