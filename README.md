@@ -8,4 +8,4 @@ I decided to go with Esprima over Acorn, as Esprima fulfilled all of the require
 
 ## Usage
 
-To start the server, run "gulp" in the project root, and visit [http://localhost:3000/](http://localhost;3000/).
+To start the server, run "gulp" in the project root, and visit [http://localhost:3000/](http://localhost;3000/). For more details on the query syntax, see [the ESTree docs](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Parser_API) and [the ESQuery docs](https://github.com/estools/esquery).
