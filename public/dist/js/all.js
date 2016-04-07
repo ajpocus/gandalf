@@ -9661,6 +9661,12 @@ var debounce = require('debounce');
 var Checker = require('./checker');
 
 $(function () {
+  var $code = $('#code');
+  var checker = new Checker($code.val());
+  updateWhitelist(checker);
+  updateBlacklist(checker);
+  updateQuery(checker);
+
   $('#code').keyup(debounce(function (ev) {
     var $code = $(this);
     var checker = new Checker($code.val());

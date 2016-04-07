@@ -10,20 +10,24 @@ for (var i = 0; i < 10; i++) {
   <div class="status-container">
     <div class="status-group">
       <label>Whitelist</label>
-      <input id="whitelist">
+      <input id="whitelist" value="ForStatement">
       <span class="status"></span>
     </div>
 
     <div class="status-group">
       <label>Blacklist</label>
-      <input id="blacklist">
+      <input id="blacklist" value="WhileStatement,WithStatement">
       <span class="status"></span>
     </div>
 
     <div class="status-group">
       <label>Query</label>
-      <input id="query">
+      <input id="query" value="ForStatement > VariableDeclaration">
       <span class="status"></span>
     </div>
   </div>
+
+  <p class="info">
+    For more details on the query syntax, see <a href="https://github.com/estools/esquery">the ESQuery Github page</a>.
+  </p>
 </div>
